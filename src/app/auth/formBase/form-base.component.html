@@ -1,0 +1,37 @@
+<form (submit)="onSubmit(baseForm)" *ngIf="!isLoading" #baseForm="ngForm">
+  <mat-form-field>
+    <input
+      type="email"
+      matInput
+      name="email"
+      placeholder="Your email"
+      ngModel
+      #email="ngModel"
+      required
+      email
+    />
+    <mat-error *ngIf="email.invalid">Please enter an valid email.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="password"
+      matInput
+      name="password"
+      placeholder="Your password"
+      ngModel
+      #password="ngModel"
+      required
+      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+    />
+    <mat-error *ngIf="password.invalid">Please enter a password.</mat-error>
+    <mat-hint *ngIf="buttonName === 'Signup'">
+      ** Must contain at least one number and one uppercase and lowercase
+      letter, and at least 8 or more characters **
+    </mat-hint>
+  </mat-form-field>
+  <div class="btnWrapper">
+    <button class="submit-btn" type="submit" mat-raised-button color="accent">
+      {{ buttonName }}
+    </button>
+  </div>
+</form>

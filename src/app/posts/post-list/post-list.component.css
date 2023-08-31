@@ -1,0 +1,28 @@
+mat-spinner {
+  margin: auto;
+}
+mat-paginator {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+mat-accordion {
+  width: 10%;
+}
+
+/*host means i target the element*/
+:host {
+  display: block;
+  margin-top: 1rem;
+}
+.postImage {
+  width: 100%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+.postImage img {
+  width: 100%;
+}
+.info-text {
+  text-align: center;
+}

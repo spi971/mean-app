@@ -1,0 +1,10 @@
+<h1 class="pageTitle">Login</h1>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form *ngIf="!isLoading">
+    <app-form-base
+      (formValues)="formValuesHandler($event)"
+      buttonName="Login"
+    ></app-form-base>
+  </form>
+</mat-card>

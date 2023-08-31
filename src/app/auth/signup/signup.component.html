@@ -1,0 +1,23 @@
+<h1 class="pageTitle">Signup</h1>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        name="username"
+        placeholder="Your username"
+        ngModel
+        #username="ngModel"
+        required
+        minlength="3"
+      />
+      <mat-error *ngIf="username.invalid">Please enter a username.</mat-error>
+    </mat-form-field>
+    <app-form-base
+      (formValues)="formValuesHandler($event, username)"
+      buttonName="Signup"
+    ></app-form-base>
+  </form>
+</mat-card>

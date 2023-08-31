@@ -1,0 +1,17 @@
+mat-form-field {
+  width: 100%;
+}
+mat-spinner {
+  margin: auto;
+}
+mat-hint {
+  color: #f44336;
+}
+.btnWrapper {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.submit-btn {
+  display: block;
+  margin: auto;
+}
