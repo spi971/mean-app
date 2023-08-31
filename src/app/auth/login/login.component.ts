@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginUser } from '../user.model';
 import { FormGroup, NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 //no template, the component will be load with the router
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -22,12 +23,10 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: FormGroup) {
+    if (form.invalid) {
+      return;
+    }
     const { email, password } = form.value;
-
-    const userLogin: LoginUser = {
-      email: email,
-      password: password,
-    };
-    console.log(userLogin);
+    this.authService.loginUser(email, password);
   }
 }

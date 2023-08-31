@@ -21,4 +21,16 @@ export class AuthService {
         console.log(serverResponseData);
       });
   }
+
+  loginUser(email: string, password: string) {
+    const userData: LoginUser = {
+      email: email,
+      password: password,
+    };
+    this.http
+      .post<{ message: string; token: any }>(this.apiUrl + 'login', userData)
+      .subscribe((serverResponseData) => {
+        console.log(serverResponseData);
+      });
+  }
 }
