@@ -11,7 +11,7 @@
       <p>{{ post.content }}</p>
     </mat-card-content>
 
-    <mat-action-row *ngIf="isConnected">
+    <mat-action-row *ngIf="userIsLogged">
       <a mat-button [routerLink]="['/edit', post.id]" class="primary">EDIT</a>
       <button mat-button color="warn" (click)="onDelete(post.id)">
         DELETE

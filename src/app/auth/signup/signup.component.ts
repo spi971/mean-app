@@ -16,14 +16,14 @@ export class SignupComponent implements OnInit {
 
   formValuesHandler(event: NgForm, usernameInput: NgModel) {
     const { form } = event;
-    const { username } = usernameInput.viewModel;
-    this.onSignup(form, username);
+    this.onSignup(form, usernameInput.viewModel);
   }
 
   onSignup(form: FormGroup, username: string) {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     const { email, password } = form.value;
     this.authService.createUser(username, email, password);
   }

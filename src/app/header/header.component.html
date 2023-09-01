@@ -2,10 +2,17 @@
   <span><a routerLink="/">Kamo</a></span>
   <span class="spacer"></span>
   <ul>
-    <li>
+    <li *ngIf="userIsLogged">
       <a mat-button routerLink="/create" routerLinkActive="active">New post</a>
+    </li>
+    <li *ngIf="!userIsLogged">
       <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
+    </li>
+    <li *ngIf="!userIsLogged">
       <a mat-button routerLink="/signup" routerLinkActive="active">Signup</a>
+    </li>
+    <li *ngIf="userIsLogged">
+      <a mat-button (click)="onLogout()">Logout</a>
     </li>
   </ul>
 </mat-toolbar>

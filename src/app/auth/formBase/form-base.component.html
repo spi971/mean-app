@@ -21,16 +21,22 @@
       ngModel
       #password="ngModel"
       required
-      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
     />
     <mat-error *ngIf="password.invalid">Please enter a password.</mat-error>
-    <mat-hint *ngIf="buttonName === 'Signup'">
+    <!-- <mat-hint *ngIf="buttonName === 'Signup'">
       ** Must contain at least one number and one uppercase and lowercase
       letter, and at least 8 or more characters **
-    </mat-hint>
+    </mat-hint> -->
   </mat-form-field>
   <div class="btnWrapper">
-    <button class="submit-btn" type="submit" mat-raised-button color="accent">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <button
+      *ngIf="!isLoading"
+      class="submit-btn"
+      type="submit"
+      mat-raised-button
+      color="accent"
+    >
       {{ buttonName }}
     </button>
   </div>

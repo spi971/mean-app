@@ -15,6 +15,7 @@ export class FormBaseComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(form: NgForm) {
+    this.isLoading = true;
     this.formValues.emit(form);
   }
 }

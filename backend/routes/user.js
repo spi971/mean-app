@@ -13,6 +13,7 @@ router.post("/signup", (req, res, next) => {
       email: email,
       password: hash,
     });
+
     user
       .save()
       .then((result) => {
@@ -23,7 +24,7 @@ router.post("/signup", (req, res, next) => {
       })
       .catch((err) => {
         res.status(500).json({
-          error: err,
+          error: err.message,
         });
       });
   });

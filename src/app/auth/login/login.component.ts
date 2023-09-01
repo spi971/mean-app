@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     const { email, password } = form.value;
     this.authService.loginUser(email, password);
   }
