@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User, LoginUser } from './user.model';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -17,16 +17,24 @@ export class AuthService {
     return this.router.navigate([path]);
   }
 
-  getToken() {
+  getToken(): string {
     return this.token;
   }
 
-  getAuthStatus() {
+  getAuthStatus(): boolean {
     return this.isLogged;
   }
 
-  getAuthStatusListener() {
+  getAuthStatusListener(): Observable<boolean> {
     return this.authStatusListener.asObservable();
+  }
+
+  canActivate(): boolean | Observable<boolean> | Promise<boolean> {
+    const isLooged = this.getAuthStatus();
+    if (!isLooged) {
+      this.navigateTo('login');
+    }
+    return isLooged;
   }
 
   createUser(username: string, email: string, password: string) {
